@@ -16,13 +16,22 @@ export class CustomerListComponent implements OnInit {
   customer: Customer;
   customers: Customer[];
   message: string;
+  isBusy = false;
 
   constructor(private dataService: DataService, private loggerService: LoggerService) { }
 
   // lifecycle goes here
   ngOnInit() {
+    this.getCustomers();
+  }
+
+  getCustomers() {
+    this.isBusy = true;
     this.loggerService.log('Getting customers ...');
-    this.customers = this.dataService.getCustomers();
+    this.dataService.getCustomers().then(custs => {
+      this.isBusy = false;
+      this.customers = custs;
+    });
   }
 
   shift(increment: number) {
