@@ -100,5 +100,15 @@ export function createTestCustomers() {
         region:  'Midwest'
       }
     },
+    {
+      id:       11,
+      name:    'Leo Fender',
+      address: {
+        street:  '1952 Stratocaster Lane',
+        city:    'Starcaster',
+        state:   'California',
+        region:  'West'
+      }
+    },
   ];
 }
