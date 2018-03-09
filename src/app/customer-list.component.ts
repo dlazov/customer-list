@@ -32,7 +32,12 @@ export class CustomerListComponent implements OnInit {
     this.dataService.getCustomers().subscribe(custs => {
       this.isBusy = false;
       this.customers = custs;
-    });
+    },
+      (errorMsg: string) => {
+        this.isBusy = false;
+        alert(errorMsg); // TODO: Never use alerts
+      }
+    );
   }
 
   shift(increment: number) {
